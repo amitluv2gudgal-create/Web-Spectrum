@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const path = require("path");
 
 const db = require("./database/db");
 
@@ -14,62 +13,68 @@ app.use(express.static("public"));
 /* SAVE LEAD */
 app.post("/api/leads", (req, res) => {
 
-    const {
-        name,
-        email,
-        company,
-        message
-    } = req.body;
+    try {
 
-    db.run(
-        `
-        INSERT INTO leads (
+        const {
             name,
             email,
             company,
             message
-        )
-        VALUES (?, ?, ?, ?)
-        `,
-        [name, email, company, message],
-        function(err){
+        } = req.body;
 
-            if(err){
-                console.log(err.message);
+        const stmt = db.prepare(`
+            INSERT INTO leads (
+                name,
+                email,
+                company,
+                message
+            )
+            VALUES (?, ?, ?, ?)
+        `);
 
-                return res.status(500).json({
-                    error: err.message
-                });
-            }
+        stmt.run(
+            name,
+            email,
+            company,
+            message
+        );
 
-            res.json({
-                success: true,
-                message: "Lead saved successfully"
-            });
-        }
-    );
+        res.json({
+            success: true,
+            message: "Lead saved successfully"
+        });
+
+    } catch(err){
+
+        console.log(err.message);
+
+        res.status(500).json({
+            error: err.message
+        });
+    }
 });
 
 /* GET LEADS */
 app.get("/api/leads", (req, res) => {
 
-    db.all(
-        `
-        SELECT * FROM leads
-        ORDER BY id DESC
-        `,
-        [],
-        (err, rows) => {
+    try {
 
-            if(err){
-                return res.status(500).json({
-                    error: err.message
-                });
-            }
+        const stmt = db.prepare(`
+            SELECT *
+            FROM leads
+            ORDER BY id DESC
+        `);
 
-            res.json(rows);
-        }
-    );
+        const rows = stmt.all();
+
+        res.json(rows);
+
+    } catch(err){
+
+        res.status(500).json({
+            error: err.message
+        });
+    }
 });
 
 const PORT = process.env.PORT || 3000;

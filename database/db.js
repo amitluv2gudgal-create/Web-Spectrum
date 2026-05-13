@@ -1,22 +1,19 @@
-const sqlite3 = require("sqlite3").verbose();
+const Database = require("better-sqlite3");
 
-const db = new sqlite3.Database("./leads.db", (err) => {
-    if(err){
-        console.log(err.message);
-    } else {
-        console.log("✅ Leads Database Connected");
-    }
-});
+const db = new Database("leads.db");
 
-db.run(`
-CREATE TABLE IF NOT EXISTS leads (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT,
-    email TEXT,
-    company TEXT,
-    message TEXT,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-)
-`);
+console.log("✅ Leads Database Connected");
+
+/* CREATE TABLE */
+db.prepare(`
+    CREATE TABLE IF NOT EXISTS leads (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
+        email TEXT,
+        company TEXT,
+        message TEXT,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+`).run();
 
 module.exports = db;
