@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Leads</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<h1>Website Leads</h1>
+
+<table border="1" cellpadding="10" width="100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Company</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+
+    <tbody id="leadTable"></tbody>
+</table>
+
+<script>
+
+async function loadLeads(){
+
+    const response = await fetch("/api/leads");
+
+    const data = await response.json();
+
+    let rows = "";
+
+    data.forEach(lead => {
+
+        rows += `
+            <tr>
+                <td>${lead.id}</td>
+                <td>${lead.name}</td>
+                <td>${lead.email}</td>
+                <td>${lead.company}</td>
+                <td>${lead.message}</td>
+            </tr>
+        `;
+    });
+
+    document.getElementById("leadTable").innerHTML = rows;
+}
+
+loadLeads();
+
+</script>
+
+</body>
+</html>
