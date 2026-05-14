@@ -89,5 +89,18 @@
     <p>© 2026 Web Spectrum | All Rights Reserved</p>
 </footer>
 
+<script>
+
+function logout(){
+
+    localStorage.removeItem("token");
+
+    alert("Logged out successfully");
+
+    window.location.href = "/login.html";
+}
+
+</script>
+
 </body>
 </html>
