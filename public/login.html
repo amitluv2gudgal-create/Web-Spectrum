@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<section class="features">
+
+    <div class="card">
+
+        <h2>Admin Login</h2>
+
+        <form id="loginForm">
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Username"
+                required
+            >
+            <br><br>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                required
+            >
+            <br><br>
+
+            <button class="btn" type="submit">
+                Login
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<script>
+
+document
+.getElementById("loginForm")
+.addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    const response = await fetch("/api/login", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+
+            username:
+            document.getElementById("username").value,
+
+            password:
+            document.getElementById("password").value
+        })
+    });
+
+    const data = await response.json();
+
+    if(data.token){
+
+        localStorage.setItem(
+            "token",
+            data.token
+        );
+
+        window.location.href =
+        "/admin-leads.html";
+
+    } else {
+
+        alert(data.error);
+    }
+});
+
+</script>
+
+</body>
+</html>
