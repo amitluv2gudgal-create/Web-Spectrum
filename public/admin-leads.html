@@ -8,7 +8,9 @@
 
     <header>
     <h1>Web Spectrum</h1>
-    <nav>
+    
+    <nav id="navbar">
+
         <a href="index.html">Home</a>
         <a href="admin-leads.html">Admin Leads</a>
         <a href="pricing.html">Pricing</a>
@@ -32,6 +34,15 @@
 </table>
 
 <script>
+
+const token =
+localStorage.getItem("token");
+
+if(!token){
+
+    window.location.href =
+    "/login.html";
+}
 
 async function loadLeads(){
 
@@ -91,6 +102,8 @@ async function loadLeads(){
 loadLeads();
 
 </script>
+
+<script src="assets/js/navbar.js"></script>
 
 </body>
 </html>
