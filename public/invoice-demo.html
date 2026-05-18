@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>GST Invoice Demo</title>
+
+    <link
+        rel="stylesheet"
+        href="assets/css/style.css"
+    >
+
+    <style>
+
+        body{
+            background:#f5f7fa;
+            font-family:Arial;
+            padding:30px;
+        }
+
+        .invoice-container{
+
+            background:white;
+
+            max-width:1000px;
+
+            margin:auto;
+
+            padding:40px;
+
+            border-radius:10px;
+
+            box-shadow:0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .invoice-header{
+
+            display:flex;
+
+            justify-content:space-between;
+
+            margin-bottom:30px;
+        }
+
+        .invoice-title{
+
+            color:#0A1F44;
+        }
+
+        table{
+
+            width:100%;
+
+            border-collapse:collapse;
+
+            margin-top:20px;
+        }
+
+        table th,
+        table td{
+
+            border:1px solid #ddd;
+
+            padding:12px;
+
+            text-align:left;
+        }
+
+        table th{
+
+            background:#0A1F44;
+
+            color:white;
+        }
+
+        .totals{
+
+            margin-top:30px;
+
+            width:350px;
+
+            margin-left:auto;
+        }
+
+        .totals table td{
+
+            font-weight:bold;
+        }
+
+        .gst-box{
+
+            background:#f8f9fa;
+
+            padding:15px;
+
+            border-radius:8px;
+
+            margin-top:20px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="invoice-container">
+
+    <div class="invoice-header">
+
+        <div>
+
+            <h1 class="invoice-title">
+                BLACK CAT ERP
+            </h1>
+
+            <p>
+                Security Agency ERP Solution
+            </p>
+
+        </div>
+
+        <div>
+
+            <h2>
+                TAX INVOICE
+            </h2>
+
+            <p>
+                Invoice No:
+                INV-2026-001
+            </p>
+
+            <p>
+                Date:
+                18-May-2026
+            </p>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <h3>Bill To:</h3>
+
+    <p>
+
+        XYZ Industrial Security Pvt Ltd<br>
+
+        Mumbai, Maharashtra<br>
+
+        GSTIN: 27ABCDE1234F1Z5
+
+    </p>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Description</th>
+
+                <th>Qty</th>
+
+                <th>Rate</th>
+
+                <th>Amount</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+
+                <td>
+                    Security Guards Deployment
+                </td>
+
+                <td>25</td>
+
+                <td>₹18,000</td>
+
+                <td>₹4,50,000</td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Security Supervisors
+                </td>
+
+                <td>3</td>
+
+                <td>₹28,000</td>
+
+                <td>₹84,000</td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <div class="gst-box">
+
+        <h3>GST Details</h3>
+
+        <p>CGST (9%): ₹48,060</p>
+
+        <p>SGST (9%): ₹48,060</p>
+
+    </div>
+
+    <div class="totals">
+
+        <table>
+
+            <tr>
+
+                <td>Subtotal</td>
+
+                <td>₹5,34,000</td>
+
+            </tr>
+
+            <tr>
+
+                <td>GST</td>
+
+                <td>₹96,120</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Total</td>
+
+                <td>₹6,30,120</td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
