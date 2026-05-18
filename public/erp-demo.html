@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
     <title>BLACK CAT ERP Demo</title>
@@ -9,14 +10,35 @@
         href="assets/css/style.css"
     >
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
 
-            .color:white{
+        body{
+            margin:0;
+            background:#f5f7fa;
+            font-family:Arial;
+        }
+
+        .erp-layout{
+            display:flex;
+        }
+
+        .sidebar{
+            width:250px;
+            background:#0A1F44;
+            min-height:100vh;
+            color:white;
             padding:20px;
+        }
+
+        .sidebar h2{
+            color:#D4AF37;
         }
 
         .sidebar h3{
             color:#D4AF37;
+            margin-top:25px;
         }
 
         .sidebar a{
@@ -24,6 +46,10 @@
             color:white;
             text-decoration:none;
             margin:10px 0;
+        }
+
+        .sidebar a:hover{
+            color:#D4AF37;
         }
 
         .content{
@@ -38,8 +64,6 @@
             border-radius:8px;
             box-shadow:0 2px 8px rgba(0,0,0,0.1);
         }
-
-        /* DASHBOARD GRID */
 
         .dashboard-grid{
             display:grid;
@@ -65,193 +89,22 @@
             color:gray;
         }
 
-    .canvas{
-    margin-top:20px;
-}
-    </style>
+        canvas{
+            margin-top:20px;
+        }
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        .warning-box{
+            background:#fff3cd;
+            padding:15px;
+            border-radius:8px;
+            margin-bottom:20px;
+        }
+
+    </style>
 
 </head>
 
 <body>
-
-<div class="erp-layout">
-
-    <div class="sidebar">
-
-        <h2>BLACK CAT ERP</h2>
-
-        <p style="color:#ccc;">
-    SaaS Demo Version
-</p>
-
-        <h3>Operations</h3>
-
-        <a href="#">Dashboard</a>
-
-        <a href="#">Clients</a>
-
-        <a href="#">Employees</a>
-
-        <a href="#">Attendance</a>
-
-        <a href="#">Contract Strength</a>
-
-        <h3>Payroll</h3>
-
-        <a href="#">Salary Processing</a>
-
-        <a href="#">PF / ESI</a>
-
-        <a href="#">Advance Deduction</a>
-
-        <a href="#">Salary Slip</a>
-
-        <h3>Billing</h3>
-
-        <a href="#">GST Invoice</a>
-
-        <a href="#">Credit Notes</a>
-
-        <a href="#">Outstanding Reports</a>
-
-        <h3>Uniform</h3>
-
-        <a href="#">Stock In</a>
-
-        <a href="#">Stock Out</a>
-
-        <a href="#">Uniform Ledger</a>
-
-        <h3>SaaS Admin</h3>
-
-        <a href="#">Organization Control</a>
-
-        <a href="#">Subscription Plans</a>
-
-    </div>
-
-    <div class="content">
-
-    <h1>BLACK CAT ERP Dashboard</h1>
-
-    <div
-    ⚠️ This is a demo preview system.
-    Live operational features are restricted.>
-
-</div>
-
-    <div class="dashboard-grid">
-
-        <div class="dashboard-card">
-
-            <h2>1,245</h2>
-
-            <p>Total Employees</p>
-
-        </div>
-
-        <div class="dashboard-card">
-
-            <h2>84</h2>
-
-            <p>Active Clients</p>
-
-        </div>
-
-        <div class="dashboard-card">
-
-            <h2>₹42.5L</h2>
-
-            <p>Monthly Billing</p>
-
-        </div>
-
-        <div class="dashboard-card">
-
-            <h2>96%</h2>
-
-            <p>Attendance Compliance</p>
-
-            <div class="module-card">
-
-    <h2>Monthly Billing Analytics</h2>
-
-    <canvas id="billingChart"></canvas>
-
-</div>
-
-<div class="module-card">
-
-    <h2>Employee Deployment Trend</h2>
-
-    <canvas id="employeeChart"></canvas>
-
-</div>
-
-        </div>
-
-    </div>
-
-    <div class="module-card">
-
-        <h2>Operations Overview</h2>
-
-        <p>
-
-            BLACK CAT ERP manages security
-            operations across multiple branches,
-            clients and deployment locations.
-
-        </p>
-
-    </div>
-
-    <div class="module-card">
-
-        <h2>Payroll Processing</h2>
-
-        <p>
-
-            Automated salary calculation
-            including PF, ESI, PT,
-            deductions and attendance integration.
-
-        </p>
-
-    </div>
-
-    <div class="module-card">
-
-        <h2>GST Billing System</h2>
-
-        <p>
-
-            Generate GST invoices,
-            track outstanding payments,
-            manage credit notes
-            and client accounts.
-
-        </p>
-
-    </div>
-
-    <div class="module-card">
-
-        <h2>Uniform Inventory</h2>
-
-        <p>
-
-            End-to-end uniform stock management
-            with employee issue tracking
-            and payroll deduction integration.
-
-        </p>
-
-    </div>
-
-</div>
 
 <script>
 
@@ -264,11 +117,174 @@ if(!access){
     "/demo-login.html";
 }
 
+</script>
+
+<div class="erp-layout">
+
+    <div class="sidebar">
+
+        <h2>BLACK CAT ERP</h2>
+
+        <p style="color:#ccc;">
+            SaaS Demo Version
+        </p>
+
+        <h3>Operations</h3>
+
+        <a href="#">Dashboard</a>
+        <a href="#">Clients</a>
+        <a href="#">Employees</a>
+        <a href="#">Attendance</a>
+        <a href="#">Contract Strength</a>
+
+        <h3>Payroll</h3>
+
+        <a href="#">Salary Processing</a>
+        <a href="#">PF / ESI</a>
+        <a href="#">Advance Deduction</a>
+        <a href="#">Salary Slip</a>
+
+        <h3>Billing</h3>
+
+        <a href="#">GST Invoice</a>
+        <a href="#">Credit Notes</a>
+        <a href="#">Outstanding Reports</a>
+
+        <h3>Uniform</h3>
+
+        <a href="#">Stock In</a>
+        <a href="#">Stock Out</a>
+        <a href="#">Uniform Ledger</a>
+
+        <h3>SaaS Admin</h3>
+
+        <a href="#">Organization Control</a>
+        <a href="#">Subscription Plans</a>
+
+    </div>
+
+    <div class="content">
+
+        <h1>BLACK CAT ERP Dashboard</h1>
+
+        <div class="warning-box">
+
+            ⚠️ This is a demo preview system.
+            Live operational features are restricted.
+
+        </div>
+
+        <div class="dashboard-grid">
+
+            <div class="dashboard-card">
+
+                <h2>1,245</h2>
+
+                <p>Total Employees</p>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <h2>84</h2>
+
+                <p>Active Clients</p>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <h2>₹42.5L</h2>
+
+                <p>Monthly Billing</p>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <h2>96%</h2>
+
+                <p>Attendance Compliance</p>
+
+            </div>
+
+        </div>
+
+        <div class="module-card">
+
+            <h2>Monthly Billing Analytics</h2>
+
+            <canvas id="billingChart"></canvas>
+
+        </div>
+
+        <div class="module-card">
+
+            <h2>Employee Deployment Trend</h2>
+
+            <canvas id="employeeChart"></canvas>
+
+        </div>
+
+        <div class="module-card">
+
+            <h2>Operations Overview</h2>
+
+            <p>
+                BLACK CAT ERP manages security
+                operations across multiple branches,
+                clients and deployment locations.
+            </p>
+
+        </div>
+
+        <div class="module-card">
+
+            <h2>Payroll Processing</h2>
+
+            <p>
+                Automated salary calculation
+                including PF, ESI, PT,
+                deductions and attendance integration.
+            </p>
+
+        </div>
+
+        <div class="module-card">
+
+            <h2>GST Billing System</h2>
+
+            <p>
+                Generate GST invoices,
+                track outstanding payments,
+                manage credit notes
+                and client accounts.
+            </p>
+
+        </div>
+
+        <div class="module-card">
+
+            <h2>Uniform Inventory</h2>
+
+            <p>
+                End-to-end uniform stock management
+                with employee issue tracking
+                and payroll deduction integration.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
 /* BILLING CHART */
 
 const billingCtx =
-document
-.getElementById("billingChart");
+document.getElementById("billingChart");
 
 new Chart(billingCtx, {
 
@@ -298,8 +314,7 @@ new Chart(billingCtx, {
                 35
             ],
 
-            backgroundColor:
-            "#0A1F44"
+            backgroundColor:"#0A1F44"
         }]
     }
 });
@@ -307,8 +322,7 @@ new Chart(billingCtx, {
 /* EMPLOYEE CHART */
 
 const employeeCtx =
-document
-.getElementById("employeeChart");
+document.getElementById("employeeChart");
 
 new Chart(employeeCtx, {
 
@@ -338,8 +352,7 @@ new Chart(employeeCtx, {
                 1245
             ],
 
-            borderColor:
-            "#D4AF37",
+            borderColor:"#D4AF37",
 
             tension:0.3
         }]
