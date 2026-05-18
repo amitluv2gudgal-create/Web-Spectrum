@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>BLACK CAT ERP Demo</title>
+
+    <link
+        rel="stylesheet"
+        href="assets/css/style.css"
+    >
+
+    <style>
+
+        .erp-layout{
+            display:flex;
+        }
+
+        .sidebar{
+            width:250px;
+            background:#0A1F44;
+            min-height:100vh;
+            color:white;
+            padding:20px;
+        }
+
+        .sidebar h3{
+            color:#D4AF37;
+        }
+
+        .sidebar a{
+            display:block;
+            color:white;
+            text-decoration:none;
+            margin:10px 0;
+        }
+
+        .content{
+            flex:1;
+            padding:30px;
+        }
+
+        .module-card{
+            background:white;
+            padding:20px;
+            margin-bottom:20px;
+            border-radius:8px;
+            box-shadow:0 2px 8px rgba(0,0,0,0.1);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<script>
+
+const access =
+localStorage.getItem("demo_access");
+
+if(!access){
+
+    window.location.href =
+    "/demo-login.html";
+}
+
+</script>
+
+<div class="erp-layout">
+
+    <div class="sidebar">
+
+        <h2>BLACK CAT ERP</h2>
+
+        <h3>Operations</h3>
+
+        <a href="#">Dashboard</a>
+
+        <a href="#">Clients</a>
+
+        <a href="#">Employees</a>
+
+        <a href="#">Attendance</a>
+
+        <a href="#">Contract Strength</a>
+
+        <h3>Payroll</h3>
+
+        <a href="#">Salary Processing</a>
+
+        <a href="#">PF / ESI</a>
+
+        <a href="#">Advance Deduction</a>
+
+        <a href="#">Salary Slip</a>
+
+        <h3>Billing</h3>
+
+        <a href="#">GST Invoice</a>
+
+        <a href="#">Credit Notes</a>
+
+        <a href="#">Outstanding Reports</a>
+
+        <h3>Uniform</h3>
+
+        <a href="#">Stock In</a>
+
+        <a href="#">Stock Out</a>
+
+        <a href="#">Uniform Ledger</a>
+
+        <h3>SaaS Admin</h3>
+
+        <a href="#">Organization Control</a>
+
+        <a href="#">Subscription Plans</a>
+
+    </div>
+
+    <div class="content">
+
+        <h1>Welcome to BLACK CAT ERP</h1>
+
+        <div class="module-card">
+
+            <h2>Security Agency ERP</h2>
+
+            <p>
+                Complete automation platform
+                for security guard companies.
+            </p>
+
+        </div>
+
+        <div class="module-card">
+
+            <h2>Payroll Automation</h2>
+
+            <p>
+                Attendance-based payroll with
+                PF, ESI, PT and deductions.
+            </p>
+
+        </div>
+
+        <div class="module-card">
+
+            <h2>Billing & GST</h2>
+
+            <p>
+                Advanced GST invoice generation
+                with outstanding tracking.
+            </p>
+
+        </div>
+
+        <div class="module-card">
+
+            <h2>Uniform Management</h2>
+
+            <p>
+                Inventory and employee issue tracking.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

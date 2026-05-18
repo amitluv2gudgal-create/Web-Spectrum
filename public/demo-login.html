@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>BLACK CAT ERP Demo</title>
+
+    <link
+        rel="stylesheet"
+        href="assets/css/style.css"
+    >
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>BLACK CAT ERP Demo</h1>
+
+    <nav id="navbar"></nav>
+
+</header>
+
+<section class="features">
+
+    <div class="card">
+
+        <h2>Demo Access</h2>
+
+        <p>
+            Experience BLACK CAT ERP
+            with demo modules and menus.
+        </p>
+
+        <form id="demoForm">
+
+            <input
+                type="text"
+                placeholder="Demo Username"
+                value="demo"
+                readonly
+            >
+            <br><br>
+
+            <input
+                type="password"
+                placeholder="Demo Password"
+                value="demo123"
+                readonly
+            >
+            <br><br>
+
+            <button
+                type="submit"
+                class="btn"
+            >
+                Enter Demo ERP
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<script>
+
+document
+.getElementById("demoForm")
+.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    localStorage.setItem(
+        "demo_access",
+        "true"
+    );
+
+    window.location.href =
+    "/erp-demo.html";
+});
+
+</script>
+
+<script src="assets/js/navbar.js"></script>
+
+</body>
+</html>
